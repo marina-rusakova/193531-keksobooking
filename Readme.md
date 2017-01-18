@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Марина Русакова](https://up.htmlacademy.ru/javascript/8/user/193531).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Кузнецов](https://up.htmlacademy.ru/javascript/8/user/137181).
 
 ---
 
