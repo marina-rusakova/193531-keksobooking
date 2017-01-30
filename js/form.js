@@ -78,7 +78,8 @@ var formInitialization = function () {
 
   apartmensType.addEventListener('change', function () {
     var minPrice = findApartmensMinPrice(apartmensType.selectedIndex);
-    [nightPrice.value, nightPrice.min] = [minPrice, minPrice];
+    nightPrice.value = minPrice;
+    nightPrice.min = minPrice;
   });
 
   var roomCount = document.querySelector('.form__panel #room_number');
