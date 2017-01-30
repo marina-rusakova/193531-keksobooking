@@ -6,13 +6,13 @@ var formInitialization = function () {
   var availableOffers = document.querySelectorAll('.tokyo__pin-map .pin');
   var offerDetailsDialogCloseBtn = document.querySelector('.dialog__close');
 
-  function clearOfferSelections () {
-    availableOffers.forEach(function(offer) {
+  function clearOfferSelections() {
+    availableOffers.forEach(function (offer) {
       offer.classList.remove('pin--active');
     });
-  };
+  }
 
-  availableOffers.forEach(function(offer) {
+  availableOffers.forEach(function (offer) {
     offer.addEventListener('click', function () {
       clearOfferSelections();
       offer.classList.add('pin--active');
@@ -20,7 +20,7 @@ var formInitialization = function () {
     });
   });
 
-  offerDetailsDialogCloseBtn.addEventListener('click', function () {  
+  offerDetailsDialogCloseBtn.addEventListener('click', function () {
     offerDetailsDialog.style.display = 'none';
     clearOfferSelections();
   });
@@ -89,7 +89,7 @@ var formInitialization = function () {
   var TWO_BEDROOM = 1;
   var THREE_GUESTS = 0;
   var NO_GUESTS = 1;
-  
+
   guestsCapacity.selectedIndex = 1;
 
   roomCount.addEventListener('change', function () {
@@ -110,6 +110,6 @@ var formInitialization = function () {
 };
 
 
-window.addEventListener("load", function(event) {
+window.addEventListener('load', function (event) {
   formInitialization();
 });
