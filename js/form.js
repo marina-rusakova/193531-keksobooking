@@ -25,24 +25,6 @@ var formInitialization = function () {
     clearOfferSelections();
   });
 
-  var advertisementTitle = document.querySelector('.form__panel #title');
-
-  advertisementTitle.required = true;
-  advertisementTitle.minLength = 30;
-  advertisementTitle.maxLength = 100;
-
-  var nightPrice = document.querySelector('.form__panel #price');
-
-  nightPrice.required = true;
-  nightPrice.value = 1000;
-  nightPrice.min = 1000;
-  nightPrice.max = 1000000;
-
-
-  var address = document.querySelector('.form__panel #address');
-
-  address.required = true;
-
   var checkinTime = document.querySelector('.form__panel #time');
   var checkoutTime = document.querySelector('.form__panel #timeout');
 
@@ -76,9 +58,10 @@ var formInitialization = function () {
     return 0;
   };
 
+  var nightPrice = document.querySelector('.form__panel #price');
+
   apartmensType.addEventListener('change', function () {
     var minPrice = findApartmensMinPrice(apartmensType.selectedIndex);
-    nightPrice.value = minPrice;
     nightPrice.min = minPrice;
   });
 
