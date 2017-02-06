@@ -40,22 +40,13 @@ var formInitialization = function () {
     availableOffers.forEach(function (offer) {
       offer.classList.remove('pin--active');
     });
-  }
+  };
 
   availableOffers.forEach(function (offer) {
     offer.addEventListener('keyup', function (evt) {
       if (isEnterPressed(evt)) {
-        offer.setAttribute('aria-pressed', false);
         showOfferDetailsDialog();
         highlightOffer(evt.target);
-      }
-    });
-  });
-
-  availableOffers.forEach(function (offer) {
-    offer.addEventListener('keydown', function (evt) {
-      if (isEnterPressed(evt)) {
-        offer.setAttribute('aria-pressed', true);
       }
     });
   });
@@ -66,14 +57,7 @@ var formInitialization = function () {
 
   offerDetailsDialogCloseBtn.addEventListener('keyup', function (evt) {
     if (isEnterPressed(evt)) {
-      offerDetailsDialogCloseBtn.setAttribute('aria-pressed', false);
       hideOfferDetailsDialog();
-    }
-  });
-
-  offerDetailsDialogCloseBtn.addEventListener('keydown', function (evt) {
-    if (isEnterPressed(evt)) {
-      offerDetailsDialogCloseBtn.setAttribute('aria-pressed', true);
     }
   });
 
