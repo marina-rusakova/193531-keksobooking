@@ -40,7 +40,7 @@ var formInitialization = function () {
     availableOffers.forEach(function (offer) {
       offer.classList.remove('pin--active');
     });
-  };
+  }
 
   availableOffers.forEach(function (offer) {
     offer.addEventListener('keyup', function (evt) {
