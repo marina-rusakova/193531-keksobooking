@@ -9,12 +9,12 @@ var formInitialization = function () {
 
   var ENTER_KEY_CODE = 13;
 
-  var highlightOffer = function(selectedOffer) {
+  var highlightOffer = function (selectedOffer) {
     selectedOffer.classList.add('pin--active');
-  }
+  };
 
 
-  var clickHandler = function(evt) {
+  var clickHandler = function (evt) {
     showOfferDetailsDialog();
     highlightOffer(evt.target.parentElement);
   };
@@ -24,7 +24,7 @@ var formInitialization = function () {
 
   var isEnterPressed = function (evt) {
     return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
-  }
+  };
 
   var showOfferDetailsDialog = function () {
     clearOfferSelections();
@@ -40,7 +40,7 @@ var formInitialization = function () {
     availableOffers.forEach(function (offer) {
       offer.classList.remove('pin--active');
     });
-  };
+  }
 
   availableOffers.forEach(function (offer) {
     offer.addEventListener('keyup', function (evt) {
