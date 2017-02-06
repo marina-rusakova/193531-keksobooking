@@ -5,24 +5,76 @@ var formInitialization = function () {
   var offerDetailsDialog = document.querySelector('.dialog');
   var availableOffers = document.querySelectorAll('.tokyo__pin-map .pin');
   var offerDetailsDialogCloseBtn = document.querySelector('.dialog__close');
+  var offerMap = document.querySelector('.tokyo__pin-map');
+
+  var ENTER_KEY_CODE = 13;
+
+  var highlightOffer = function(selectedOffer) {
+    selectedOffer.classList.add('pin--active');
+  }
+
+
+  var clickHandler = function(evt) {
+    showOfferDetailsDialog();
+    highlightOffer(evt.target.parentElement);
+  };
+
+  offerMap.addEventListener('click', clickHandler, true);
+
+
+  var isEnterPressed = function (evt) {
+    return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
+  }
+
+  var showOfferDetailsDialog = function () {
+    clearOfferSelections();
+    offerDetailsDialog.style.display = 'block';
+  };
+
+  var hideOfferDetailsDialog = function () {
+    clearOfferSelections();
+    offerDetailsDialog.style.display = 'none';
+  };
 
   function clearOfferSelections() {
     availableOffers.forEach(function (offer) {
       offer.classList.remove('pin--active');
     });
-  }
+  };
 
   availableOffers.forEach(function (offer) {
-    offer.addEventListener('click', function () {
-      clearOfferSelections();
-      offer.classList.add('pin--active');
-      offerDetailsDialog.style.display = 'block';
+    offer.addEventListener('keyup', function (evt) {
+      if (isEnterPressed(evt)) {
+        offer.setAttribute('aria-pressed', false);
+        showOfferDetailsDialog();
+        highlightOffer(evt.target);
+      }
+    });
+  });
+
+  availableOffers.forEach(function (offer) {
+    offer.addEventListener('keydown', function (evt) {
+      if (isEnterPressed(evt)) {
+        offer.setAttribute('aria-pressed', true);
+      }
     });
   });
 
   offerDetailsDialogCloseBtn.addEventListener('click', function () {
-    offerDetailsDialog.style.display = 'none';
-    clearOfferSelections();
+    hideOfferDetailsDialog();
+  });
+
+  offerDetailsDialogCloseBtn.addEventListener('keyup', function (evt) {
+    if (isEnterPressed(evt)) {
+      offerDetailsDialogCloseBtn.setAttribute('aria-pressed', false);
+      hideOfferDetailsDialog();
+    }
+  });
+
+  offerDetailsDialogCloseBtn.addEventListener('keydown', function (evt) {
+    if (isEnterPressed(evt)) {
+      offerDetailsDialogCloseBtn.setAttribute('aria-pressed', true);
+    }
   });
 
   var checkinTime = document.querySelector('.form__panel #time');
