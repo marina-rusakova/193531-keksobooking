@@ -1,6 +1,6 @@
 'use strict';
 
-window.synchronizeFields = (function() {
+window.synchronizeFields = (function () {
   return function (sourceDomElement, destinationDomElement, sourceValues, destinationValues, dstProperty) {
     sourceDomElement.addEventListener('change', function () {
       var srcIndex = sourceValues.indexOf(sourceDomElement.value);

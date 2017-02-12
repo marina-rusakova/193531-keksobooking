@@ -1,6 +1,6 @@
 'use strict';
 
-window.initializePins = (function() {
+window.initializePins = (function () {
   var ENTER_KEY_CODE = 13;
 
   var offerDetailsDialog = document.querySelector('.dialog');
@@ -16,7 +16,7 @@ window.initializePins = (function() {
     selectedOffer.classList.add('pin--active');
   };
 
-  var clearOfferSelections = function() {
+  var clearOfferSelections = function () {
     availableOffers.forEach(function (offer) {
       offer.classList.remove('pin--active');
     });

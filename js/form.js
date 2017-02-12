@@ -24,7 +24,7 @@ window.formInitialization = (function () {
     window.synchronizeFields(apartmensType, nightPrice, apartmensTypeValues, nightPriceMinValues, 'min');
 
     window.synchronizeFields(roomCount, guestsCapacity, roomCountValues, guestsCapacityValues, 'value');
-  }
+  };
 })();
 
 
