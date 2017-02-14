@@ -16,5 +16,4 @@ window.synchronizeFields = (function () {
       }
     });
   };
-
 })();
