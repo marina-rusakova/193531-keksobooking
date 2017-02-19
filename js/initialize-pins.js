@@ -24,7 +24,7 @@ window.initializePins = (function () {
 
   var clickHandler = function (evt) {
     window.card.showCard(evt.target.parentElement, offerDetailsDialog, function () {
-      clearOfferSelections(); 
+      clearOfferSelections();
       highlightOffer(evt.target.parentElement);
     }, function () {
       clearOfferSelections();
@@ -34,12 +34,14 @@ window.initializePins = (function () {
   var offerKeyupHandler = function (evt) {
     if (isEnterPressed(evt)) {
       window.card.showCard(evt.target, offerDetailsDialog, function () {
-        clearOfferSelections(); 
+        clearOfferSelections();
         highlightOffer(evt.target);
       }, function () {
         clearOfferSelections();
-        /*Евгений, если вызвать evt.target.focus() без setTimeout, то НЕ работает. Помогите, пожалуйста, починить.*/
-        setTimeout(function() { evt.target.focus() }, 200);
+        /* Евгений, если вызвать evt.target.focus() без setTimeout, то НЕ работает. Помогите, пожалуйста, починить.*/
+        setTimeout(function () {
+          evt.target.focus()
+        }, 200);
       });
     }
   };

@@ -10,7 +10,7 @@ window.card = (function () {
 
       onCardOpen(selectedOffer);
 
-      if (onCardClose != undefined) {
+      if (typeof onCardClose === 'function') {
         onCardCloseHandler = onCardClose;
       }
     },
@@ -22,5 +22,5 @@ window.card = (function () {
         onCardCloseHandler();
       }
     }
-  }
+  };
 })();

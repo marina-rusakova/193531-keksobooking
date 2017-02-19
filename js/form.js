@@ -20,11 +20,11 @@ window.formInitialization = (function () {
     window.initializePins();
 
     window.synchronizeFields(checkinTime, checkoutTime,
-      function () {
+        function () {
         var srcIndex = checkinTimeValues.indexOf(checkinTime.value);
         checkoutTime['value'] = checkoutTimeValues[srcIndex];
       },
-      function () {
+        function () {
         var dstIndex = checkoutTimeValues.indexOf(checkoutTime.value);
         checkinTime.value = checkinTimeValues[dstIndex];
       }
