@@ -23,39 +23,42 @@ window.initializePins = (function () {
   };
 
   var clickHandler = function (evt) {
-    showOfferDetailsDialog();
-    highlightOffer(evt.target.parentElement);
+    window.card.showCard(evt.target.parentElement, offerDetailsDialog, function () {
+      clearOfferSelections(); 
+      highlightOffer(evt.target.parentElement);
+    }, function () {
+      clearOfferSelections();
+    });
   };
 
-  var showOfferDetailsDialog = function () {
-    clearOfferSelections();
-    offerDetailsDialog.style.display = 'block';
-  };
-
-  var hideOfferDetailsDialog = function () {
-    clearOfferSelections();
-    offerDetailsDialog.style.display = 'none';
+  var offerKeyupHandler = function (evt) {
+    if (isEnterPressed(evt)) {
+      window.card.showCard(evt.target, offerDetailsDialog, function () {
+        clearOfferSelections(); 
+        highlightOffer(evt.target);
+      }, function () {
+        clearOfferSelections();
+        /*Евгений, если вызвать evt.target.focus() без setTimeout, то НЕ работает. Помогите, пожалуйста, починить.*/
+        setTimeout(function() { evt.target.focus() }, 200);
+      });
+    }
   };
 
   return function () {
+
     offerMap.addEventListener('click', clickHandler, true);
 
     availableOffers.forEach(function (offer) {
-      offer.addEventListener('keyup', function (evt) {
-        if (isEnterPressed(evt)) {
-          showOfferDetailsDialog();
-          highlightOffer(evt.target);
-        }
-      });
+      offer.addEventListener('keyup', offerKeyupHandler);
     });
 
     offerDetailsDialogCloseBtn.addEventListener('click', function () {
-      hideOfferDetailsDialog();
+      window.card.hideCard(offerDetailsDialog);
     });
 
     offerDetailsDialogCloseBtn.addEventListener('keyup', function (evt) {
       if (isEnterPressed(evt)) {
-        hideOfferDetailsDialog();
+        window.card.hideCard(offerDetailsDialog);
       }
     });
   };
