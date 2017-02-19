@@ -21,13 +21,13 @@ window.formInitialization = (function () {
 
     window.synchronizeFields(checkinTime, checkoutTime,
         function () {
-        var srcIndex = checkinTimeValues.indexOf(checkinTime.value);
-        checkoutTime['value'] = checkoutTimeValues[srcIndex];
-      },
+          var srcIndex = checkinTimeValues.indexOf(checkinTime.value);
+          checkoutTime['value'] = checkoutTimeValues[srcIndex];
+        },
         function () {
-        var dstIndex = checkoutTimeValues.indexOf(checkoutTime.value);
-        checkinTime.value = checkinTimeValues[dstIndex];
-      }
+          var dstIndex = checkoutTimeValues.indexOf(checkoutTime.value);
+          checkinTime.value = checkinTimeValues[dstIndex];
+        }
     );
 
     window.synchronizeFields(apartmensType, nightPrice, function () {

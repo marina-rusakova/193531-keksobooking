@@ -40,7 +40,7 @@ window.initializePins = (function () {
         clearOfferSelections();
         /* Евгений, если вызвать evt.target.focus() без setTimeout, то НЕ работает. Помогите, пожалуйста, починить.*/
         setTimeout(function () {
-          evt.target.focus()
+          evt.target.focus();
         }, 200);
       });
     }
