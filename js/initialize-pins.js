@@ -31,17 +31,14 @@ window.initializePins = (function () {
     });
   };
 
-  var offerKeyupHandler = function (evt) {
+  var offerKeypressHandler = function (evt) {
     if (isEnterPressed(evt)) {
       window.card.showCard(evt.target, offerDetailsDialog, function () {
         clearOfferSelections();
         highlightOffer(evt.target);
       }, function () {
         clearOfferSelections();
-        /* Евгений, если вызвать evt.target.focus() без setTimeout, то НЕ работает. Помогите, пожалуйста, починить.*/
-        setTimeout(function () {
-          evt.target.focus();
-        }, 200);
+        evt.target.focus();
       });
     }
   };
@@ -51,7 +48,7 @@ window.initializePins = (function () {
     offerMap.addEventListener('click', clickHandler, true);
 
     availableOffers.forEach(function (offer) {
-      offer.addEventListener('keyup', offerKeyupHandler);
+      offer.addEventListener('keypress', offerKeypressHandler);
     });
 
     offerDetailsDialogCloseBtn.addEventListener('click', function () {
