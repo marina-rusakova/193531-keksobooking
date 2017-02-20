@@ -19,11 +19,29 @@ window.formInitialization = (function () {
   return function () {
     window.initializePins();
 
-    window.synchronizeFields(checkinTime, checkoutTime, checkinTimeValues, checkoutTimeValues, 'value');
+    window.synchronizeFields(checkinTime, checkoutTime,
+        function () {
+          var srcIndex = checkinTimeValues.indexOf(checkinTime.value);
+          checkoutTime['value'] = checkoutTimeValues[srcIndex];
+        },
+        function () {
+          var dstIndex = checkoutTimeValues.indexOf(checkoutTime.value);
+          checkinTime.value = checkinTimeValues[dstIndex];
+        }
+    );
 
-    window.synchronizeFields(apartmensType, nightPrice, apartmensTypeValues, nightPriceMinValues, 'min');
+    window.synchronizeFields(apartmensType, nightPrice, function () {
+      var srcIndex = apartmensTypeValues.indexOf(apartmensType.value);
+      nightPrice['min'] = nightPriceMinValues[srcIndex];
+    });
 
-    window.synchronizeFields(roomCount, guestsCapacity, roomCountValues, guestsCapacityValues, 'value');
+    window.synchronizeFields(roomCount, guestsCapacity, function () {
+      var srcIndex = roomCountValues.indexOf(roomCount.value);
+      guestsCapacity['value'] = guestsCapacityValues[srcIndex];
+    }, function () {
+      var dstIndex = guestsCapacityValues.indexOf(guestsCapacity.value);
+      roomCount.value = roomCountValues[dstIndex];
+    });
   };
 })();
 

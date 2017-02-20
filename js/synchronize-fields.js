@@ -1,18 +1,14 @@
 'use strict';
 
 window.synchronizeFields = (function () {
-  return function (sourceDomElement, destinationDomElement, sourceValues, destinationValues, dstProperty) {
+  return function (sourceDomElement, destinationDomElement, directChange, reverseChange) {
     sourceDomElement.addEventListener('change', function () {
-      var srcIndex = sourceValues.indexOf(sourceDomElement.value);
-      if (srcIndex >= 0) {
-        destinationDomElement[dstProperty] = destinationValues[srcIndex];
-      }
+      directChange();
     });
 
     destinationDomElement.addEventListener('change', function () {
-      var dstIndex = destinationValues.indexOf(destinationDomElement.value);
-      if (dstIndex >= 0) {
-        sourceDomElement.value = sourceValues[dstIndex];
+      if (typeof reverseChange === 'function') {
+        reverseChange();
       }
     });
   };
