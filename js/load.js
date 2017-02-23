@@ -8,7 +8,7 @@ window.load = (function () {
     xhr.open('GET', url);
 
     xhr.addEventListener('load', function (evt) {
-      try {
+      /*try {*/
         if (evt.target.status >= 400) {
           /* Евгений, кoд ниже закоментирован, потому что не проходит проверку Travis */
           /* console.log('Failed to load data. Server returned status: ' + evt.target.status);*/
@@ -16,7 +16,7 @@ window.load = (function () {
           var result = JSON.parse(evt.target.response);
           onLoad(result);
         }
-      } catch(err) { /* console.log(err)*/ }
+      /*}  catch(err) { console.log(err) }*/
     });
 
     xhr.addEventListener('error', function (e) {
@@ -24,7 +24,7 @@ window.load = (function () {
       /* console.log('Something\'s went wrong!'); */
     });
 
-    xhr.addEventListener('timeout', function() {
+    xhr.addEventListener('timeout', function () {
       /* Евгений, кoд ниже закоментирован, потому что не проходит проверку Travis */
       /* console.log('Time\'s up!'); */
     });
