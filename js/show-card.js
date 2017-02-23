@@ -28,7 +28,7 @@ window.card = (function () {
 
       var featureList = newDialog.querySelector('.lodge__features');
 
-      featureList.innerHTML = "";
+      featureList.innerHTML = '';
 
       data.offer.features.forEach(function (feature) {
         var newFeature = dialogFeatureTemplate.content.querySelector('.feature__image').cloneNode(true);
@@ -38,7 +38,7 @@ window.card = (function () {
 
       var photosList = newDialog.querySelector('.lodge__photos');
 
-      photosList.innerHTML = "";
+      photosList.innerHTML = '';
 
       data.offer.photos.forEach(function (photo) {
         var newPhoto = dialogPhotosTemplate.content.querySelector('img').cloneNode(true);
@@ -46,9 +46,8 @@ window.card = (function () {
         photosList.appendChild(newPhoto);
       });
 
-      offerDialogPanel.innerHTML = "";
+      offerDialogPanel.innerHTML = '';
       offerDialogPanel.appendChild(newDialog);
-      
 
       offerDetailsDialog.style.display = 'block';
 

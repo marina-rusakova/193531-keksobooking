@@ -63,15 +63,15 @@ window.initializePins = (function () {
 
       newOffer.style.left = renderedOffers[i].location.x + 'px';
       newOffer.style.top = renderedOffers[i].location.y + 'px';
-      
-      newOffer.getElementsByTagName("img")[0].src = renderedOffers[i].author.avatar;
-      newOffer.getElementsByTagName("img")[0].alt = renderedOffers[i].offer.address;
+
+      newOffer.getElementsByTagName('img')[0].src = renderedOffers[i].author.avatar;
+      newOffer.getElementsByTagName('img')[0].alt = renderedOffers[i].offer.address;
 
       newOffer.setAttribute('offer-id', i);
 
       newOffer.addEventListener('keypress', offerKeypressHandler);
 
-      availableOffers.push(newOffer); 
+      availableOffers.push(newOffer);
 
       offerMap.appendChild(newOffer);
     }
