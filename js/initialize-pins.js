@@ -169,7 +169,6 @@ window.initializePins = (function () {
 
       offerMap.appendChild(newOffer);
     }
-
   };
 
   return function () {
