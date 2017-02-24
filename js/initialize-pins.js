@@ -115,13 +115,13 @@ window.initializePins = (function () {
 
     if (housingRoomNumber !== 'any') {
       filteredApartments = filteredApartments.filter(function (apartment) {
-        return apartment.offer.rooms === parseInt(housingRoomNumber);
+        return apartment.offer.rooms === parseInt(housingRoomNumber, 10);
       });
     }
 
     if (housingGuestsNumber !== 'any') {
       filteredApartments = filteredApartments.filter(function (apartment) {
-        return apartment.offer.guests === parseInt(housingGuestsNumber);
+        return apartment.offer.guests === parseInt(housingGuestsNumber, 10);
       });
     }
 
