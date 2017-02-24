@@ -16,50 +16,50 @@
     <div class="tokyo__filters-container">
       <form action="#" class="tokyo__filters">
         <label><select name="housing_type" id="housing_type" class="tokyo__filter">
-          <option value="any" selected>Любой тип жилья</option>
-          <option value="flat">Квартира</option>
-          <option value="house">Дом</option>
-          <option value="bungalo">Сарай</option>
+          <option value="type:any" selected>Любой тип жилья</option>
+          <option value="type:flat">Квартира</option>
+          <option value="type:house">Дом</option>
+          <option value="type:bungalo">Сарай</option>
         </select></label>
         <label><select name="housing_price" id="housing_price" class="tokyo__filter">
-          <option value="middle" selected>10000 - 50000&#x20bd;</option>
-          <option value="low">до 10000&#x20bd;</option>
-          <option value="hight">от 50000&#x20bd;</option>
+          <option value="price:middle">10000 - 50000&#x20bd;</option>
+          <option value="price:low" selected>до 10000&#x20bd;</option>
+          <option value="price:hight">от 50000&#x20bd;</option>
         </select></label>
         <label><select name="housing_room-number" id="housing_room-number" class="tokyo__filter">
-          <option value="any" selected>Любое число комнат</option>
-          <option value="1">Одна комната</option>
-          <option value="2">Две комнаты</option>
-          <option value="3">Три комнаты</option>
+          <option value="rooms:any" selected>Любое число комнат</option>
+          <option value="rooms:1">Одна комната</option>
+          <option value="rooms:2">Две комнаты</option>
+          <option value="rooms:3">Три комнаты</option>
         </select></label>
         <label><select name="housing_guests-number" id="housing_guests-number" class="tokyo__filter">
-          <option value="any" selected>Любое число гостей</option>
-          <option value="1">Один гость</option>
-          <option value="2">Два гостя</option>
+          <option value="guests:any" selected>Любое число гостей</option>
+          <option value="guests:1">Один гость</option>
+          <option value="guests:2">Два гостя</option>
         </select></label>
         <fieldset id="housing_features" class="tokyo__filter-set">
           <label class="feature">
-            <input type="checkbox" name="feature" value="wifi"><span
+            <input type="checkbox" name="feature" value="features:wifi"><span
             class="feature__image  feature__image--wifi"></span>
           </label>
           <label class="feature">
-            <input type="checkbox" name="feature" value="dishwasher"><span
+            <input type="checkbox" name="feature" value="features:dishwasher"><span
             class="feature__image  feature__image--dishwasher"></span>
           </label>
           <label class="feature">
-            <input type="checkbox" name="feature" value="parking"><span
+            <input type="checkbox" name="feature" value="features:parking"><span
             class="feature__image  feature__image--parking"></span>
           </label>
           <label class="feature">
-            <input type="checkbox" name="feature" value="washer"><span
+            <input type="checkbox" name="feature" value="features:washer"><span
             class="feature__image  feature__image--washer"></span>
           </label>
           <label class="feature">
-            <input type="checkbox" name="feature" value="elevator"><span
+            <input type="checkbox" name="feature" value="features:elevator"><span
             class="feature__image  feature__image--elevator"></span>
           </label>
           <label class="feature">
-            <input type="checkbox" name="feature" value="conditioner"><span
+            <input type="checkbox" name="feature" value="features:conditioner"><span
             class="feature__image  feature__image--conditioner"></span>
           </label>
         </fieldset>
@@ -67,39 +67,13 @@
     </div>
     <div class="tokyo__pin-map">
       <div class="pin  pin__main" role="button" aria-pressed="false" tabindex="1"><img src="img/main-pin-image.png" alt="Main Pin" class="rounded" width="40" height="44"></div>
-      <div class="pin" style="left: 700px;top: 350px" role="button" aria-pressed="false" tabindex="1"><img src="img/avatars/avatar.png" alt="User Avatar" class="rounded" width="40" height="40"></div>
-      <div class="pin" style="left: 400px;top: 400px" role="button" aria-pressed="false" tabindex="1"><img src="img/avatars/simpson.png" alt="User Avatar" class="rounded" width="40" height="40"></div>
-      <div class="pin" role="button" aria-pressed="false" tabindex="1"><img src="img/avatars/default.png" alt="User Avatar" class="rounded" width="40" height="40"></div>
     </div>
     <div class="dialog" role="dialog" aria-labelledby="lodge__title" aria-describedby="lodge__description">
       <div class="dialog__title"><img src="img/avatars/avatar.png" alt="Avatar" width="70" height="70">
         <a href="#" class="dialog__close" role="button" aria-pressed="false" tabindex="1"><img src="img/close.svg" alt="close" width="22" height="22"></a>
       </div>
-      <div class="dialog__panel">
-        <h3 class="lodge__title">Уютное гнездышко для молодоженов</h3>
-        <p class="lodge__address">102-0082 Tōkyō-to, Chiyoda-ku, Ichibanchō, 14−3</p>
-        <h3 class="lodge__price">5200&#x20bd;/ночь</h3>
-        <h4 class="lodge__type">Квартира</h4>
-        <p class="lodge__rooms-and-guests">2 комнаты для 3 гостей</p>
-        <p class="lodge__checkin-time">Заед после 14:00, выезд до 10:00</p>
-        <div class="lodge__features">
-          <span class="feature__image  feature__image--wifi"></span>
-          <span class="feature__image  feature__image--dishwasher"></span>
-          <span class="feature__image  feature__image--parking"></span>
-          <span class="feature__image  feature__image--washer"></span>
-          <span class="feature__image  feature__image--elevator"></span>
-          <span class="feature__image  feature__image--conditioner"></span>
-        </div>
-        <p class="lodge__description">Великолепная квартира-студия в центре Токио. Подходит как туристам, там и
-          бизнесменам. Квартира полностью укомплектована и имеет свежий ремонт.</p>
-        <div class="lodge__photos">
-          <img src="http://placehold.it/52x42" alt="Lodge photo" width="52" height="42">
-          <img src="http://placehold.it/52x42" alt="Lodge photo" width="52" height="42">
-          <img src="http://placehold.it/52x42" alt="Lodge photo" width="52" height="42">
-          <img src="http://placehold.it/52x42" alt="Lodge photo" width="52" height="42">
-          <img src="http://placehold.it/52x42" alt="Lodge photo" width="52" height="42">
-        </div>
-      </div>
+
+      <div class="dialog__panel"></div>
     </div>
   </section>
   <div class="notice">
@@ -241,6 +215,33 @@
       <button class="form__submit" type="submit">Опубликовать</button>
     </form>
   </div>
+
+  <template id="pin-template">
+    <div class="pin" role="button" aria-pressed="false" tabindex="1">
+      <img src="" alt="" class="rounded" width="40" height="40">
+    </div>
+  </template>
+
+  <template id="dialog-panel-template">
+    <h3 class="lodge__title"></h3>
+    <p class="lodge__address"></p>
+    <h3 class="lodge__price"></h3>
+    <h4 class="lodge__type"></h4>
+    <p class="lodge__rooms-and-guests"></p>
+    <p class="lodge__checkin-time"></p>
+    <div class="lodge__features"></div>
+    <p class="lodge__description"></p>
+    <div class="lodge__photos"></div>
+  </template>
+
+  <template id="features-panel-template">
+    <span class="feature__image"></span> 
+  </template>
+
+  <template id="photos-panel-template">
+    <img src="" alt="Lodge photo" width="52" height="42"> 
+  </template>
+
 </main>
 <footer class="footer container">
   <div class="center-wrapper">
@@ -255,6 +256,8 @@
     </nav>
   </div>
 </footer>
+
+<script src="js/load.js" type="application/javascript"></script>
 
 <script src="js/show-card.js" type="application/javascript"></script>
 
