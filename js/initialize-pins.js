@@ -134,10 +134,10 @@ window.initializePins = (function () {
       filteredApartments = filteredApartments.filter(function (apartment) {
         return housingFeatures
           .map(function (feature) {
-            return apartment.offer.features.indexOf(feature) !== -1
-          }).reduce(function (acc, el) { 
-            return acc && el 
-          }, true)
+            return apartment.offer.features.indexOf(feature) !== -1;
+          }).reduce(function (acc, el) {
+            return acc && el;
+          }, true);
       });
     }
 
