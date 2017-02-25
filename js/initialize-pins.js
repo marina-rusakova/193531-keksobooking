@@ -1,6 +1,7 @@
 'use strict';
 
 window.initializePins = (function () {
+  
   var ENTER_KEY_CODE = 13;
 
   var RENDERED_OFFERS_COUNT = 3;
