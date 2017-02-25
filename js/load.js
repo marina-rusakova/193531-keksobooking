@@ -9,7 +9,9 @@ window.load = (function () {
 
     xhr.addEventListener('load', function (evt) {
       if (evt.target.status >= 400) {
-        throw ('Failed to load data. Server returned status: ' + evt.target.status);
+        throw {
+          message: 'Failed to load data. Server returned status: ' + evt.target.status;
+        }
       } else if (evt.target.status >= 200) {
         var result = JSON.parse(evt.target.response);
         onLoad(result);
@@ -17,11 +19,15 @@ window.load = (function () {
     });
 
     xhr.addEventListener('error', function (e) {
-      throw 'Something\'s went wrong!'; 
+      throw {
+        message: 'Something\'s went wrong!';
+      }
     });
 
     xhr.addEventListener('timeout', function () {
-      throw 'Time\'s up!'; 
+      throw {
+        message: 'Time\'s up!';
+      }
     });
 
     xhr.send();

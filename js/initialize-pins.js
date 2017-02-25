@@ -72,7 +72,7 @@ window.initializePins = (function () {
     var filterType = typeAndValue[0];
     var filterValue = typeAndValue[1];
 
-    switch(filterType) {
+    switch (filterType) {
       case 'type':
         housingType = filterValue;
         break;
@@ -133,9 +133,11 @@ window.initializePins = (function () {
     if (housingFeatures.length > 0) {
       filteredApartments = filteredApartments.filter(function (apartment) {
         return housingFeatures
-          .map(function(feature) {
-            return apartment.offer.features.indexOf(feature) != -1}
-          ).reduce(function(acc, el) { return acc && el }, true)
+          .map(function (feature) {
+            return apartment.offer.features.indexOf(feature) !== -1
+          }).reduce(function (acc, el) { 
+            return acc && el 
+          }, true)
       });
     }
 
