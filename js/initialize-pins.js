@@ -35,13 +35,12 @@ window.initializePins = (function () {
   };
 
   var clickHandler = function (evt) {
-    var offerDataIndex = Math.max(
-        evt.target.parentElement.getAttribute('offer-id'), +evt.target.getAttribute('offer-id')
-    );
+    var selectedOffer = evt.target.tagName === 'DIV' ? evt.target : evt.target.parentElement;
+    var offerDataIndex = selectedOffer.getAttribute('offer-id');
 
     window.card.showCard(renderedOffers[offerDataIndex], evt.target.parentElement, offerDetailsDialog, function () {
       clearOfferSelections();
-      highlightOffer(evt.target.tagName === 'DIV' ? evt.target : evt.target.parentElement);
+      highlightOffer(selectedOffer);
     }, function () {
       clearOfferSelections();
     });
@@ -73,22 +72,28 @@ window.initializePins = (function () {
     var filterType = typeAndValue[0];
     var filterValue = typeAndValue[1];
 
-    if (filterType === 'type') {
-      housingType = filterValue;
-    } if (filterType === 'price') {
-      housingPrice = filterValue;
-    } if (filterType === 'rooms') {
-      housingRoomNumber = filterValue;
-    } if (filterType === 'guests') {
-      housingGuestsNumber = filterValue;
-    } if (filterType === 'features') {
-      if (evt.target.checked) {
-        housingFeatures.push(filterValue);
-      } else {
-        housingFeatures = housingFeatures.filter(function (item) {
-          return item !== filterValue;
-        });
-      }
+    switch(filterType) {
+      case 'type':
+        housingType = filterValue;
+        break;
+      case 'price':
+        housingPrice = filterValue;
+        break;
+      case 'rooms':
+        housingRoomNumber = filterValue;
+        break;
+      case 'guests':
+        housingGuestsNumber = filterValue;
+        break;
+      case 'features':
+        if (evt.target.checked) {
+          housingFeatures.push(filterValue);
+        } else {
+          housingFeatures = housingFeatures.filter(function (item) {
+            return item !== filterValue;
+          });
+        }
+        break;
     }
 
     renderNewAvailableOffers();
@@ -127,9 +132,10 @@ window.initializePins = (function () {
 
     if (housingFeatures.length > 0) {
       filteredApartments = filteredApartments.filter(function (apartment) {
-        return housingFeatures.filter(function (desiredFeature) {
-          return apartment.offer.features.indexOf(desiredFeature) !== -1;
-        }).length === housingFeatures.length;
+        return housingFeatures
+          .map(function(feature) {
+            return apartment.offer.features.indexOf(feature) != -1}
+          ).reduce(function(acc, el) { return acc && el }, true)
       });
     }
 
@@ -146,6 +152,7 @@ window.initializePins = (function () {
 
   var renderNewAvailableOffers = function () {
     clearOffers();
+    window.card.hideCard(offerDetailsDialog);
 
     renderedOffers = applyFilters(similarApartments).slice(0, RENDERED_OFFERS_COUNT);
 
