@@ -9,7 +9,7 @@ window.load = (function () {
 
     xhr.addEventListener('load', function (evt) {
       var result = JSON.parse(evt.target.response);
-        onLoad(result);
+      onLoad(result);
     });
 
     xhr.send();
