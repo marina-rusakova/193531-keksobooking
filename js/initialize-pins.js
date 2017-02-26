@@ -115,13 +115,11 @@ window.initializePins = (function () {
     }
 
     filteredApartments = filteredApartments.filter(function (apartment) {
-      switch(housingPrice) {
+      switch (housingPrice) {
         case 'low':
           return apartment.offer.price < 10000;
-          break;
         case 'middle':
           return apartment.offer.price >= 10000 && apartment.offer.price < 50000;
-          break;
         default:
           return apartment.offer.price >= 50000;
       }
