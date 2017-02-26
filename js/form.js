@@ -14,34 +14,42 @@ window.formInitialization = (function () {
   var roomCount = document.querySelector('.form__panel #room_number');
   var guestsCapacity = document.querySelector('.form__panel #capacity');
   var roomCountValues = ['1 комната', '2 комнаты', '100 комнат'];
-  var guestsCapacityValues = ['не для гостей', 'для 3 гостей', 'для 3 гостей'];
+  var guestsCapacityCorrespondedValues = ['не для гостей', 'для 3 гостей', 'для 3 гостей'];
+  var guestsCapacityAvailableValues = ['для 3 гостей', 'не для гостей'];
+
+  var checkinTimeChange = function () {
+    var srcIndex = checkinTimeValues.indexOf(checkinTime.value);
+    checkoutTime.selectedIndex = srcIndex;
+  };
+
+  var checkoutTimeChange = function () {
+    var dstIndex = checkoutTimeValues.indexOf(checkoutTime.value);
+    checkinTime.selectedIndex = dstIndex;
+  };
+
+  var apartmensTypeChange = function () {
+    var srcIndex = apartmensTypeValues.indexOf(apartmensType.value);
+    nightPrice.min = nightPriceMinValues[srcIndex];
+  };
+
+  var roomCountChange = function () {
+    var srcIndex = roomCountValues.indexOf(roomCount.value);
+    guestsCapacity.selectedIndex = guestsCapacityAvailableValues.indexOf(guestsCapacityCorrespondedValues[srcIndex]);
+  };
+
+  var guestsCapacityChange = function () {
+    var dstIndex = guestsCapacityCorrespondedValues.indexOf(guestsCapacity.value);
+    roomCount.selectedIndex = dstIndex;
+  };
 
   return function () {
     window.initializePins();
 
-    window.synchronizeFields(checkinTime, checkoutTime,
-        function () {
-          var srcIndex = checkinTimeValues.indexOf(checkinTime.value);
-          checkoutTime['value'] = checkoutTimeValues[srcIndex];
-        },
-        function () {
-          var dstIndex = checkoutTimeValues.indexOf(checkoutTime.value);
-          checkinTime.value = checkinTimeValues[dstIndex];
-        }
-    );
+    window.synchronizeFields(checkinTime, checkoutTime, checkinTimeChange, checkoutTimeChange);
 
-    window.synchronizeFields(apartmensType, nightPrice, function () {
-      var srcIndex = apartmensTypeValues.indexOf(apartmensType.value);
-      nightPrice['min'] = nightPriceMinValues[srcIndex];
-    });
+    window.synchronizeFields(apartmensType, nightPrice, apartmensTypeChange);
 
-    window.synchronizeFields(roomCount, guestsCapacity, function () {
-      var srcIndex = roomCountValues.indexOf(roomCount.value);
-      guestsCapacity['value'] = guestsCapacityValues[srcIndex];
-    }, function () {
-      var dstIndex = guestsCapacityValues.indexOf(guestsCapacity.value);
-      roomCount.value = roomCountValues[dstIndex];
-    });
+    window.synchronizeFields(roomCount, guestsCapacity, roomCountChange, guestsCapacityChange);
   };
 })();
 
