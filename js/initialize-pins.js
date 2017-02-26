@@ -2,6 +2,7 @@
 
 window.initializePins = (function () {
   var ENTER_KEY_CODE = 13;
+  var ESCAPE_KEY_CODE = 27;
 
   var RENDERED_OFFERS_COUNT = 3;
 
@@ -22,6 +23,10 @@ window.initializePins = (function () {
 
   var isEnterPressed = function (evt) {
     return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
+  };
+
+  var isEscapePressed = function (evt) {
+    return evt.keyCode && evt.keyCode === ESCAPE_KEY_CODE;
   };
 
   var highlightOffer = function (selectedOffer) {
@@ -67,6 +72,7 @@ window.initializePins = (function () {
   var housingFeatures = [];
 
   var filterChangedHandler = function (evt) {
+    RENDERED_OFFERS_COUNT = similarApartments.length;
 
     var typeAndValue = evt.target.value.split(':');
     var filterType = typeAndValue[0];
@@ -109,12 +115,13 @@ window.initializePins = (function () {
     }
 
     filteredApartments = filteredApartments.filter(function (apartment) {
-      if (housingPrice === 'low') {
-        return apartment.offer.price < 10000;
-      } else if (housingPrice === 'middle') {
-        return apartment.offer.price >= 10000 && apartment.offer.price < 50000;
-      } else {
-        return apartment.offer.price >= 50000;
+      switch (housingPrice) {
+        case 'low':
+          return apartment.offer.price < 10000;
+        case 'middle':
+          return apartment.offer.price >= 10000 && apartment.offer.price < 50000;
+        default:
+          return apartment.offer.price >= 50000;
       }
     });
 
@@ -196,6 +203,14 @@ window.initializePins = (function () {
     offerDetailsDialogCloseBtn.addEventListener('keyup', function (evt) {
       if (isEnterPressed(evt)) {
         window.card.hideCard(offerDetailsDialog);
+      }
+    });
+
+    document.addEventListener('keyup', function (evt) {
+      if (isEscapePressed(evt)) {
+        if (window.card.isCardOpend(offerDetailsDialog)) {
+          window.card.hideCard(offerDetailsDialog);
+        }
       }
     });
 

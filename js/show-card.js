@@ -64,6 +64,10 @@ window.card = (function () {
       if (typeof onCardCloseHandler === 'function') {
         onCardCloseHandler();
       }
+    },
+
+    isCardOpend: function (offerDetailsDialog) {
+      return offerDetailsDialog.style.display === 'block';
     }
   };
 })();
