@@ -626,6 +626,10 @@ select option:hover {
     cursor: pointer;
 }
 
+.pin__main:hover {
+    cursor: default;
+}
+
 .pin--active {
     background-image: url("../img/pin-active.png");
 }

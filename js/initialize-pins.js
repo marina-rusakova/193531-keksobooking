@@ -43,12 +43,14 @@ window.initializePins = (function () {
     var selectedOffer = evt.target.tagName === 'DIV' ? evt.target : evt.target.parentElement;
     var offerDataIndex = selectedOffer.getAttribute('offer-id');
 
-    window.card.showCard(renderedOffers[offerDataIndex], evt.target.parentElement, offerDetailsDialog, function () {
-      clearOfferSelections();
-      highlightOffer(selectedOffer);
-    }, function () {
-      clearOfferSelections();
-    });
+    if (offerDataIndex !== null) {
+      window.card.showCard(renderedOffers[offerDataIndex], evt.target.parentElement, offerDetailsDialog, function () {
+        clearOfferSelections();
+        highlightOffer(selectedOffer);
+      }, function () {
+        clearOfferSelections();
+      });
+    }  
   };
 
   var offerKeypressHandler = function (evt) {
