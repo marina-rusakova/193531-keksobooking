@@ -50,7 +50,7 @@ window.initializePins = (function () {
       }, function () {
         clearOfferSelections();
       });
-    }  
+    }
   };
 
   var offerKeypressHandler = function (evt) {
